@@ -77,6 +77,7 @@ async def recognize(websocket, path):
             text = json.loads(response)['result']
             #result_te = json.loads(response)['text']
             if len(text) < 4:
+                await websocket.send(re_text)  
                 continue
             #text = ''.join(text.split())
             for i in range(len(text)):
