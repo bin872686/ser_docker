@@ -75,15 +75,15 @@ async def recognize(websocket, path):
         response, stop = await loop.run_in_executor(pool, process_chunk, rec, message)
         if 'text' in response:
             text = json.loads(response)['result']
-            result_te = json.loads(response)['text']
-            if result_te == "[FIL]":
+            #result_te = json.loads(response)['text']
+            if len(text) < 4:
                 continue
             #text = ''.join(text.split())
             for i in range(len(text)):
                 
                 if i>0:
-                    last_time = text[i-1].['end']
-                    now_time = text[i].['start']
+                    last_time = text[i-1]['end']
+                    now_time = text[i]['start']
                     in_time = now_time - last_time
                     if in_time > 0.7:
                         n_text = l_text + '，' + text[i]['word']
