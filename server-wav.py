@@ -34,7 +34,7 @@ class AsrHandler(BaseHandler):
     def post(self):
         # global conversation
         voice_data = self.get_argument('voice')
-        tmpfile = utils.write_temp_file(base64.b64decode(voice_data), '.mp3','/home/bbb/asrdatabases')    
+        tmpfile = utils.write_temp_file(base64.b64decode(voice_data), '.mp3','/home/asrdatabases')    
         fname, _= os.path.splitext(tmpfile)
         nfile = fname + '-16k.wav'
         # downsampling
